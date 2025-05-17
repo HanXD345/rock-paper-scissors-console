@@ -53,20 +53,30 @@ function playGame() {
         return humanChoice;
     }
 
-    for (let i = 0; i < 5; i++) {
-        let humanChoice = getHumanChoice();
-        let computerChoice = getComputerChoice();
+    const rockButton = document.createElement('button');
+    const paperButton = document.createElement('button');
+    const scissorsButton = document.createElement('button');
 
-        playRound(humanChoice, computerChoice);
-    }
+    rockButton.textContent = "Rock";
+    paperButton.textContent = "Paper";
+    scissorsButton.textContent = "Scissors";
 
-    if (humanScore > computerScore) {
-        console.log(`After 5 rounds, the user wins! The final score is: Human: ${humanScore}, Computer: ${computerScore}`);
-    } else if (humanScore < computerScore) {
-        console.log(`After 5 rounds, the user lost! The final score is: Human: ${humanScore}, Computer: ${computerScore}`);
-    } else {
-        console.log(`After 5 rounds, It's a tie! The final score is: Human: ${humanScore}, Computer: ${computerScore}`);
-    }
+    document.body.appendChild(rockButton);
+    document.body.appendChild(paperButton);
+    document.body.appendChild(scissorsButton);
+
+    rockButton.addEventListener("click", () => {
+        playRound("rock", getComputerChoice());
+    });
+
+    paperButton.addEventListener("click", () => {
+        playRound("paper", getComputerChoice());
+    });
+
+    scissorsButton.addEventListener("click", () => {
+        playRound("scissors", getComputerChoice());
+    });
+
 }
 
 playGame();
